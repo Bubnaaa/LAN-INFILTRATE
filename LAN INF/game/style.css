@@ -1,0 +1,215 @@
+/* Základní nastavení */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#back-to-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #0f0;
+    background: rgba(0, 40, 0, 0.5);
+    color: #0f0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 100;
+    /* Aby bylo vždy nad mapou */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#back-to-menu:hover {
+    background: #0f0;
+    color: #000;
+    box-shadow: 0 0 15px #0f0;
+    transform: scale(1.1);
+}
+
+.arrow {
+    line-height: 0;
+    margin-top: -4px;
+    /* Jemné doladění pozice šipky */
+}
+
+/* Horní hrací plocha */
+#game-viewport {
+    flex-grow: 1;
+    border-bottom: 2px solid #0f0;
+    display: flex;
+    flex-direction: column;
+    /* Prvky uvnitř budou pod sebou */
+    align-items: center;
+    /* Vycentruje vodorovně */
+    justify-content: center;
+    /* Vycentruje svisle */
+    background-color: #050505;
+    position: relative;
+    padding: 20px;
+    /* Trocha místa kolem */
+}
+
+/* --- MŘÍŽKA BUDOVY --- */
+#building-map {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    /* 3 sloupce */
+    grid-template-rows: repeat(3, 100px);
+    /* 3 řádky */
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+.room {
+    width: 150px;
+    height: 100px;
+    border: 2px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    background: rgba(0, 20, 0, 0.2);
+}
+
+.room-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+
+.room-id {
+    font-size: 0.7rem;
+    color: #33ff00;
+}
+
+/* Stavy místností */
+.room.secured {
+    border-color: #0055ff;
+    color: #0055ff;
+}
+
+.room.locked {
+    border-color: #550000;
+    color: #550000;
+}
+
+.room.infected {
+    border-color: #0f0;
+    color: #0f0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    background: rgba(0, 255, 0, 0.05);
+}
+
+/* ---------------------- */
+
+/* Spodní konzole */
+#console-container {
+    height: 35%;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#output {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+#input-line {
+    display: flex;
+    align-items: center;
+}
+
+#prompt {
+    color: #fff;
+    margin-right: 10px;
+    user-select: none;
+}
+
+#cli-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: inherit;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#detection-wrapper {
+    position: absolute;
+    /* Toto je klíčové */
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #0f0;
+    z-index: 10;
+}
+
+#trace-container {
+    width: 100%;
+    height: 10px;
+    background: #111;
+    border: 1px solid #333;
+    margin-top: 5px;
+}
+
+#trace-bar {
+    width: 0%;
+    height: 100%;
+    background: #0f0;
+    transition: width 0.5s, background 0.5s;
+}
+
+.entry {
+    margin-bottom: 4px;
+}
+
+.command-text {
+    color: #fff;
+    font-weight: bold;
+}
+
+.system-text {
+    color: #848484;
+    font-style: italic;
+}
+
+.error-text {
+    color: rgb(255, 0, 0);
+    font-style: italic;
+}
+
+.gain-text {
+    color: #0f0;
+    font-weight: bold;
+}
+
+#output::-webkit-scrollbar {
+    width: 6px;
+}
+
+#output::-webkit-scrollbar-thumb {
+    background: #222;
+}

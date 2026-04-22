@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAN Infiltrator game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-viewport">
+        <a href="/public/index.html" id="back-to-menu" title="Return to Main Menu">
+            <span class="arrow">←</span>
+        </a>
+
+        <div id="detection-wrapper">
+            DETECTION LEVEL: <span id="trace-value">0</span>%
+            <div id="trace-container">
+                <div id="trace-bar"></div>
+            </div>
+        </div>
+
+        <div id="building-map"></div>
+    </div>
+
+    <div id="console-container">
+        <div id="output">
+            <div class="entry system-text">BSP OS v1.0.0...</div>
+            <div class="entry system-text">Type 'help' for commands.</div>
+        </div>
+        <div id="input-line">
+            <span id="prompt">></span>
+            <input type="text" id="cli-input" spellcheck="false" autocomplete="off" autofocus>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
